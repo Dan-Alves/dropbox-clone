@@ -116,14 +116,20 @@ class DropBoxController {
         let hours = parseInt((duration / (1000 * 60 * 60)) % 24);
 
         if(hours > 0) {
+            if(minutes === 0)
+                return `${hours} horas e ${seconds} segundos`;
             return `${hours} horas, ${minutes} minutos e ${seconds} segundos`;
         }
 
         if(minutes > 0) {
+            if(hours === 0) 
+                return `${minutes} minutos e ${seconds} segundos`;
             return `${hours} horas, ${minutes} minutos e ${seconds} segundos`;
         }
 
         if(seconds > 0) {
+            if(hours === 0 && minutes === 0)
+                return `${seconds} segundos`;
             return `${hours} horas, ${minutes} minutos e ${seconds} segundos`;
         }
 
