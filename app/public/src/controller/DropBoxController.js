@@ -49,7 +49,8 @@ class DropBoxController {
 
                 responses.forEach(resp => {
 
-                    this.getFilebaseRef().push().set(resp.files['input-file']);
+                    console.log(resp);
+                    this.getFirebaseRef().push().set(resp.files['input-file']);
 
                 });
 
@@ -363,8 +364,20 @@ class DropBoxController {
             ${this.getFileIconView(file)}
             <div class="name text-center">${file.name}</div>
         `
+
+        this.initEventsLi(li);
         
         return li;
+
+    }
+
+    initEventsLi(li) {
+
+        li.addEventListener('click', e => {
+            
+            li.classList.toggle('selected');
+
+        })
 
     }
 
